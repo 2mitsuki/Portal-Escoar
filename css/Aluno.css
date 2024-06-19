@@ -1,0 +1,102 @@
+body {
+            font-family: Arial, sans-serif;
+            
+            padding: 0;
+            background-color: #00aeff6b;
+            background-image: url('img/fundo.png');
+    
+    background-size: cover;
+    background-position: center;
+    
+    min-height: 100vh;
+    margin: 0; 
+    justify-content: center; 
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Centraliza todo o conteúdo */
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            text-align: center;
+            height: 30px;
+           
+        }
+        
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px; /* Adiciona uma margem entre os botões */
+            
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+       
+        .upload-link {
+            color: #007bff;
+            text-decoration: underline;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Adiciona uma margem entre a seção "Comunidade" e "Classe" */
+        .community-class {
+            margin-top: 20px;
+        }
+
+        #listaTarefasDisplay {
+        list-style-type: none; 
+        padding: 0;
+        text-align: left; 
+    }
+
+    
+    #listaTarefasDisplay li {
+        margin-bottom: 5px; 
+
+    }
+
+     
+     #horarioEscolarTable {
+        border-collapse: collapse; 
+        width: 100%; 
+    }
+
+    #horarioEscolarTable th, #horarioEscolarTable td {
+        border: 1px solid #ccc; /* Adiciona uma borda sólida de 1px a todas as células */
+        padding: 8px; /* Adiciona um preenchimento interno às células */
+        text-align: center; /* Centraliza o texto nas células */}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de Classe</title>
+    <style>
+        /* Estilos do chat */
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-messages {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+        }
+
+        .chat-input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .chat-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .chat-button:hover {
+            background-color: #0056b3;
+        }
+         #backButton {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #backButton:hover {
+            background-color: #0056b3;
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+    <button id="backButton">Voltar</button>
+        <h2>Chat de Classe</h2>
+
+        <label for="classSelect">Selecione a Classe:</label>
+        <select id="classSelect">
+            <option value="classe1">Classe 1</option>
+            <option value="classe2">Classe 2</option>
+            
+        </select>
+
+        <div class="chat-messages" id="chatMessages">
+            
+        </div>
+
+        <input type="text" id="chatInput" class="chat-input" placeholder="Digite sua mensagem...">
+        <button id="sendMessageButton" class="chat-button">Enviar</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var chatMessagesElement = document.getElementById("chatMessages");
+            var chatInput = document.getElementById("chatInput");
+            var sendMessageButton = document.getElementById("sendMessageButton");
+            var classSelect = document.getElementById("classSelect");
+
+            
+            function loadMessages() {
+                var selectedClass = classSelect.value;
+                var savedMessages = localStorage.getItem(selectedClass);
+                if (savedMessages) {
+                    var messages = JSON.parse(savedMessages);
+                    chatMessagesElement.innerHTML = ""; // Limpa as mensagens existentes
+                    messages.forEach(function(message) {
+                        var messageElement = document.createElement("li");
+                        messageElement.textContent = message;
+                        chatMessagesElement.appendChild(messageElement);
+                    });
+                }
+            }
+            loadMessages();
+
+            
+            sendMessageButton.addEventListener("click", function() {
+                var selectedClass = classSelect.value;
+                var messageText = chatInput.value.trim();
+                if (messageText !== "") {
+                    var messageElement = document.createElement("li");
+                    messageElement.textContent = messageText;
+                    chatMessagesElement.appendChild(messageElement);
+                    chatMessagesElement.scrollTop = chatMessagesElement.scrollHeight;
+
+                    // Salvar mensagem no armazenamento local
+                    var savedMessages = localStorage.getItem(selectedClass);
+                    var messages = savedMessages ? JSON.parse(savedMessages) : [];
+                    messages.push(messageText);
+                    localStorage.setItem(selectedClass, JSON.stringify(messages));
+
+                    chatInput.value = "";
+                }
+            });
+
+           
+            chatInput.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    sendMessageButton.click();
+                }
+            });
+
+            
+            classSelect.addEventListener("change", loadMessages);
+        });
+          var backButton = document.getElementById("backButton");
+            backButton.addEventListener("click", function() {
+                
+                window.location.href = "Aluno.html";
+            });
+    </script>
+</body>
+</html>

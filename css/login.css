@@ -1,0 +1,99 @@
+body {
+    background-color: #f1f1f148;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+.area-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #5bacd491;
+    border-radius: 10px;
+    width: 355px;
+    height: 320px;
+    padding: 35px;
+}
+
+.login form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.login input {
+    margin-top: 10px;
+    background-color: #f0e4e4ea;
+    color: #000000b7;
+    border: none;
+    height: 45px;
+    outline: none;
+    border-radius: 9px;
+}
+
+.login img {
+    width: 65px;
+    height: auto;
+}
+
+input::placeholder {
+    color: #0000009f;
+    font-size: 19px;
+    text-align: center;
+}
+
+form [type="submit"] {
+    display: block;
+    background-color: #007bff;
+    font-size: 19px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+p {
+    color: #cf0fcf9f;
+}
+
+a {
+    color: #cf0fcf;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+/* Estilos para o dark mode */
+.dark-mode body {
+    background-color: #111;
+    color: #fff;
+}
+
+.dark-mode .area-login {
+    background-color: #222;
+}
+
+.dark-mode .login {
+    background-color: #333;
+}
+
+.dark-mode .login input {
+    background-color: #e0e0e0;
+    color: #fff;
+}
+
+.dark-mode input::placeholder {
+    color: #aaa;
+}
+
+.dark-mode form [type="submit"] {
+    background-color: #007bff;
+}
+

@@ -1,0 +1,71 @@
+body {
+    background-image: url('../emg/fund.jpg');
+    /* Torna a imagem de fundo responsiva */
+    background-size: cover;
+    background-position: center;
+    /* Define uma altura mínima para garantir que todos os conteúdos sejam visíveis */
+    min-height: 100vh;
+    margin: 0; /* Remova a margem padrão */
+    display: flex; /* Use flexbox para centralizar o conteúdo verticalmente */
+    justify-content: center; /* Centralize horizontalmente */
+    align-items: center; /* Centralize verticalmente */
+}
+
+.container {
+    text-align: center;
+    color: rgb(253, 253, 253);
+    animation: fade-in 1s ease;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+@keyframes bounce {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(20px);
+    }
+}
+
+.buttons {
+    margin-top: 50px;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+    transition: box-shadow 0.3s ease; /* Adiciona transição suave para a sombra */
+}
+
+.button:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
+}
+
+/* Adiciona transição de cor suave para todos os textos dentro da classe .container ao passar o mouse */
+.container:hover h1,
+.container:hover p,
+.container:hover button {
+    color: #000000;
+    transition: color 0.3s ease;
+}
+
+p {
+    font-size: 25px;
+}

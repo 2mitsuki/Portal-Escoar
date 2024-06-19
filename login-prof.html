@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Professor</title>
+    <link rel="stylesheet" href="css/login.css">
+
+    <style>
+        /* Posicionamento do botão de dark mode */
+        .dark-mode-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 1000; /* Garante que o botão esteja acima do conteúdo */
+        }
+
+        .other-page-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #007bff; /* Azul padrão do Bootstrap */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 1000; /* Garante que o botão esteja acima do conteúdo */
+        }
+    </style>
+</head>
+<body>
+    <section class="area-login">
+        <div class="login">
+            <div>                
+                <img src="img/anu.png">
+            </div>
+            <form method="post" id="loginForm">
+                <input type="text" name="nome" placeholder="user name prof" autofocus>
+                <input type="password" name="senha" placeholder="Senha">
+                <input type="submit" value="Entrar">
+            </form>
+            <p>Ainda não tem uma conta?<a href="cadastro.html">Criar conta</a></p>
+        </div>
+    </section>
+    <button class="dark-mode-button" onclick="toggleDarkMode()">Dark Mode</button>
+    <button class="other-page-button" onclick="redirect()">voltar</button>
+    
+    <script>
+
+function toggleDarkMode() {
+            var body = document.body;
+            body.classList.toggle("dark-mode");
+        }
+
+        function redirect() {
+            window.location.href = "index.html"; 
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            var loginForm = document.getElementById("loginForm");
+
+            loginForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                var nome = loginForm.elements["nome"].value;
+                var senha = loginForm.elements["senha"].value;
+                var professorArmazenado = localStorage.getItem('professor');
+
+                if (professorArmazenado) {
+                    var professor = JSON.parse(professorArmazenado);
+                    if (professor.nome === nome && professor.senha === senha) {
+                        alert("Login bem-sucedido como professor!");
+                        window.location.href = "professor.html"; // Redireciona para o painel do professor
+                    } else {
+                        alert("Nome de usuário ou senha incorretos.");
+                    }
+                } else {
+                    alert("Nenhum usuário cadastrado como professor. Por favor, crie uma conta de professor.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

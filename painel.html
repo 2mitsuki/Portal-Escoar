@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Boas-vindas</title>
+    <link rel="stylesheet" href="css/painel.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="fade-in">Bem-vindo ao Portal Escolar!</h1>
+        <p class="fade-in">Quer fazer parte da maior comunidade acadêmica e entrar em fóruns sobre tecnologia e conhecimentos diversos?</p>
+        <p class="fade-in">Cadastre-se já no Portal Escolar!</p>
+        <div class="animation-container">
+            <div class="animation"></div>
+        </div>
+        <div class="buttons">
+            <button id="button1" class="button">Fazer login como aluno</button>
+            <button id="button2" class="button">Fazer login como professor</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("button1").onclick = function() {
+            window.location.href = "login-aluno.html";
+        };
+
+        document.getElementById("button2").onclick = function() {
+            window.location.href = "login-prof.html";
+        };
+    </script>
+</body>
+</html>

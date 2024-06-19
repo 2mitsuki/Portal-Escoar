@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Aluno</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f1f1f148;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px; /* Adicionado para separar os botões */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Perfil do Aluno</h2>
+        <div id="dadosUsuario">
+            <!-- Aqui serão mostrados os dados do usuário -->
+        </div>
+        <button id="voltarBtn">Voltar</button>
+        <!-- Botão de redirecionamento 1 -->
+        <button id="redirectBtn1">ir para o game spicy</button>
+        <!-- Botão de redirecionamento 2 -->
+        <button id="redirectBtn2">terminar sessão</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var dadosUsuarioDiv = document.getElementById("dadosUsuario");
+            var usuario = localStorage.getItem('usuario');
+            if (usuario) {
+                usuario = JSON.parse(usuario);
+                dadosUsuarioDiv.innerHTML += "<p><strong>Nome:</strong> " + usuario.nome + "</p>";
+                dadosUsuarioDiv.innerHTML += "<p><strong>Email:</strong> " + usuario.email + "</p>";
+                dadosUsuarioDiv.innerHTML += "<p><strong>Tipo:</strong> " + usuario.tipo + "</p>";
+                if (usuario.tipo === "aluno") {
+                    dadosUsuarioDiv.innerHTML += "<p><strong>Classe:</strong> " + usuario.classe + "</p>";
+                    dadosUsuarioDiv.innerHTML += "<p><strong>Idade:</strong> " + usuario.idade + "</p>";
+                }
+            } else {
+                dadosUsuarioDiv.innerHTML = "<p>Nenhum usuário cadastrado.</p>";
+            }
+
+            var voltarBtn = document.getElementById("voltarBtn");
+            voltarBtn.addEventListener("click", function() {
+                window.location.href = "Aluno.html";
+            });
+
+            // Função para redirecionar para outra página 1
+            var redirectBtn1 = document.getElementById("redirectBtn1");
+            redirectBtn1.addEventListener("click", function() {
+                window.location.href = "game.html"; // Substitua "outra_pagina1.html" pelo nome do seu arquivo HTML de destino
+            });
+
+            // Função para redirecionar para outra página 2
+            var redirectBtn2 = document.getElementById("redirectBtn2");
+            redirectBtn2.addEventListener("click", function() {
+                window.location.href = "index.html"; // Substitua "outra_pagina2.html" pelo nome do seu arquivo HTML de destino
+            });
+        });
+    </script>
+</body>
+</html>

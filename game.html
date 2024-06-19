@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Set</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+            background-color: #00aeff6b;
+            background-image: url('img/jogo.png');
+            background-size: cover;
+            background-position: center;   
+            min-height: 100vh;
+            margin: 0;  
+            justify-content: center; 
+            }
+        
+        #main-panel {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #68b047; /* Verde bonito */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Permitir posicionar o score */
+        }
+        
+        #score {
+            font-size: 24px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff; 
+              }
+        
+        #game-menu {
+            margin-bottom: 20px;
+        }
+
+        .game-block {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .game-block:hover {
+            background-color: #f9f9f9;
+        }
+        
+        #ranking {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        #search {
+            margin-top: 20px;
+        }
+
+        #redirect-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-panel">
+        <button id="redirect-button" onclick="redirectToOtherPage()">voltar para o painel do aluno</button>
+        <h1>Mind Set - Painel de Aprendizado Gamificado</h1>
+        <div id="score">
+            <strong>Score:</strong> <span id="user-score">0</span>
+        </div>
+        <div id="game-menu">
+            <h2>Jogos Disponíveis</h2>
+            <div class="game-block">
+                <a href="game1.html">MATEMATICA</a>
+            </div>
+            <div class="game-block">
+                <a href="game2.html">REDES</a>
+            </div>
+            <div class="game-block">
+                <a href="rank.html">PROGRAMAÇÃO</a>
+            </div>
+            
+             <div class="game-block">
+                <a href="game3.html">SEAC</a>
+            </div>
+
+            <div class="game-block">
+                <a href="game4.html">FISICA</a>
+            </div>
+            
+        </div>
+        <div id="ranking">
+            <h2>Ranking</h2>
+            <ol>
+                <li>Player 1 - 1000</li>
+                <li>Player 2 - 950</li>
+                <li>Player 3 - 900</li>
+                <!-- Adicione mais jogadores conforme necessário -->
+            </ol>
+        </div>
+        <div id="search">
+            <h2>Buscar Jogos</h2>
+            <input type="text" id="search-input" placeholder="Digite o nome do jogo">
+            <button onclick="search()">Buscar</button>
+        </div>
+    </div>
+    <script>
+        // Adicione scripts JavaScript para interatividade
+        function search() {
+            var input = document.getElementById("search-input").value;
+            // Implemente a lógica de busca aqui
+            alert("Você pesquisou por: " + input);
+        }
+
+        // Recupere o score da query string da URL
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var score = urlParams.get('score');
+
+        // Atualize o score exibido no painel principal
+        if (score !== null) {
+            document.getElementById("user-score").textContent = score;
+        }
+
+        function redirectToOtherPage() {
+            window.location.href = "Aluno.html"; // Substitua "outra_pagina.html" pelo nome do seu arquivo HTML de destino
+        }
+    </script>
+
+
+    
+
+
+
+
+
+</body>
+</html>

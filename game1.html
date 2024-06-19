@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo 1 - Matemática</title>
+    <style>
+        /* Adicione estilos CSS para tornar a página bonita */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        #score {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #question {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #answer-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        #submit-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #68b047;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #back-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none; /* Remove sublinhado */
+            cursor: pointer;
+            text-align: center;
+            width: 200px; /* Define a largura para manter o botão consistente */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Jogo de Matemática</h1>
+        <div id="score">Score: <span id="user-score">0</span></div>
+        <div id="question">Qual é a resposta para 2 + 2?</div>
+        <input type="text" id="answer-input" placeholder="Digite sua resposta">
+        <button id="submit-btn" onclick="checkAnswer()">Enviar</button>
+        <a href="game.html?score=" id="back-btn">Voltar ao Painel Principal</a>
+    </div>
+
+    <script>
+        var userScore = 0;
+    
+        function redirectToMainPanel(score) {
+            window.location.href = "game.html?score=" + score;
+        }
+    
+        function checkAnswer() {
+            var answer = document.getElementById("answer-input").value;
+    
+            // Verifica se a resposta está correta
+            if (answer.trim() === "4") {
+                userScore += 10; // Aumenta o score em 10 pontos se a resposta estiver correta
+                document.getElementById("user-score").textContent = userScore; // Atualiza o score exibido
+                alert("Resposta correta! Você ganhou 10 pontos!");
+            } else {
+                alert("Resposta incorreta. Tente novamente!");
+            }
+    
+            // Redireciona de volta ao painel principal com o score atualizado
+            redirectToMainPanel(userScore);
+        }
+    </script>
+        
+    
+</body>
+</html>

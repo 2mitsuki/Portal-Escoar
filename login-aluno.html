@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        /* Posicionamento do botão de dark mode */
+        .dark-mode-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 1000; /* Garante que o botão esteja acima do conteúdo */
+        }
+
+        .other-page-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #007bff; /* Azul padrão do Bootstrap */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 1000; /* Garante que o botão esteja acima do conteúdo */
+        }
+    </style>
+</head>
+<body>
+    <section class="area-login">
+        <div class="login">
+            <div>                
+                <img src="img/anu.png">
+            </div>
+            <form method="post" id="loginForm">
+                <input type="text" name="nome" placeholder="user name aluno" autofocus>
+                <input type="password" name="senha" placeholder="sua senha">
+                <input type="submit" value="Entrar">
+            </form>
+            <p>Ainda não tem uma conta?<a href="cadastro.html">Criar conta</a></p>
+        </div>
+    </section>
+    <button class="dark-mode-button" onclick="toggleDarkMode()">Dark Mode</button>
+    <button class="other-page-button" onclick="redirect()">voltar</button>
+    
+    <script>
+        function toggleDarkMode() {
+            var body = document.body;
+            body.classList.toggle("dark-mode");
+        }
+
+        function redirect() {
+            window.location.href = "index.html"; 
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var loginForm = document.getElementById("loginForm");
+
+            loginForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                var nome = loginForm.elements["nome"].value;
+                var senha = loginForm.elements["senha"].value;
+                var usuarioArmazenado = localStorage.getItem('usuario');
+
+                if (usuarioArmazenado) {
+                    var usuario = JSON.parse(usuarioArmazenado);
+                    if (usuario.nome === nome && usuario.senha === senha) {
+                        alert("Login bem-sucedido!");
+                        // Aqui você pode redirecionar para a página principal, por exemplo
+                        window.location.href = "Aluno.html";
+                    } else {
+                        alert("Nome de usuário ou senha incorretos.");
+                    }
+                } else {
+                    alert("Nenhum usuário cadastrado. Por favor, crie uma conta.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

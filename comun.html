@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f1f1f148;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        #chatArea {
+            height: 400px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        #messageInput {
+            width: calc(100% - 20px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-right: 10px;
+        }
+
+        #sendButton {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #sendButton:hover {
+            background-color: #0056b3;
+        }
+
+        #backButton {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        #backButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Comunidade</h2>
+        <button id="backButton">Voltar</button>
+        <div id="chatArea">
+           
+        </div>
+        <div>
+            <input type="text" id="messageInput" placeholder="Digite sua mensagem...">
+            <button id="sendButton">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var chatArea = document.getElementById("chatArea");
+            var messageInput = document.getElementById("messageInput");
+            var sendButton = document.getElementById("sendButton");
+            var backButton = document.getElementById("backButton");
+
+            
+            function addMessage(message) {
+                var messageElement = document.createElement("div");
+                messageElement.textContent = message;
+                chatArea.appendChild(messageElement);
+                
+                chatArea.scrollTop = chatArea.scrollHeight;
+            }
+
+            
+            sendButton.addEventListener("click", function() {
+                var message = messageInput.value.trim();
+                if (message !== "") {
+                    addMessage("Você: " + message);
+                    
+                    messageInput.value = ""; // Limpa o campo de entrada após o envio da mensagem
+                }
+            });
+
+            messageInput.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    sendButton.click(); 
+                }
+            });
+
+           
+            setTimeout(function() {
+                addMessage("Colega1: Olá, tudo bem?");
+            }, 1000);
+
+            setTimeout(function() {
+                addMessage("Colega2: Sim, e você?");
+            }, 2000);
+
+            
+            backButton.addEventListener("click", function() {
+                window.history.back();
+            });
+        });
+    </script>
+</body>
+</html>
